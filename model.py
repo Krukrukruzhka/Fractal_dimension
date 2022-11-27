@@ -9,6 +9,7 @@ class HerstModel(object):
         with open(link, 'r') as file:
             self.kardio_list = list(map(float, file.readlines()))
         self.herst_list = []
+        self.dim_list = []
 
     def __herst(self, index, coeff):
         r = max(self.kardio_list[:index]) - min(self.kardio_list[:index])  # Размах
@@ -17,7 +18,8 @@ class HerstModel(object):
         std = (sum([(i - mean) ** 2 for i in self.kardio_list[:index]]) / n) ** 0.5  # Стандартное отклонение
         return math.log(r / std) / math.log(coeff * n)
 
-    def dimCalculate(self):
-        self.dim_list = []
+    def herstCalculate(self):
+        self.herst_list = []
         for i in range(4, len(self.kardio_list)+1):
-            self.dim_list.append(2-self.__herst(index=i, coeff=0.5))
+            self.herst_list.append(self.__herst(index=i, coeff=0.5))
+        self.dim_list = [2-i for i in self.herst_list]

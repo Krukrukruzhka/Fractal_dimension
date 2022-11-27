@@ -27,9 +27,9 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
     def browse_folder(self):
         self.plainTextEdit.clear()
-        self.plainTextEdit_2.clear()
         self.graphicsView.setScene(QtWidgets.QGraphicsScene(self))
         self.graphicsView_2.setScene(QtWidgets.QGraphicsScene(self))
+        self.graphicsView_3.setScene(QtWidgets.QGraphicsScene(self))
         file_url = QtWidgets.QFileDialog.getOpenFileUrl(self, "Выберите файл", "Кардиограммы")
         filename = file_url[0].url().split('/')[9]
         self.handler = model.HerstModel(filename=filename)
@@ -39,12 +39,11 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.graphicsView.setScene(self.create_scene(self.handler.kardio_list, 'Кардиограмма', 'fig1.png'))
 
     def calculate(self):
-        self.plainTextEdit_2.clear()
         self.graphicsView_2.setScene(QtWidgets.QGraphicsScene(self))
-        self.handler.dimCalculate()
-        for point in self.handler.dim_list:
-            self.plainTextEdit_2.appendPlainText(str(point))
-        self.graphicsView_2.setScene(self.create_scene(self.handler.dim_list, 'Размерность', 'fig2.png'))
+        self.graphicsView_3.setScene(QtWidgets.QGraphicsScene(self))
+        self.handler.herstCalculate()
+        self.graphicsView_2.setScene(self.create_scene(self.handler.herst_list, 'Показатель Херста', 'fig2.png'))
+        self.graphicsView_3.setScene(self.create_scene(self.handler.dim_list, 'Размерность', 'fig3.png'))
 
 
 if __name__ == '__main__':
