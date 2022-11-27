@@ -39,6 +39,9 @@
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -136,7 +139,7 @@ p, li { white-space: pre-wrap; }
      <string/>
     </property>
     <property name="readOnly">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -217,7 +220,7 @@ p, li { white-space: pre-wrap; }
    </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -238,6 +241,9 @@ p, li { white-space: pre-wrap; }
      <string>Отображаемые графики</string>
     </property>
     <widget class="QCheckBox" name="checkBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -259,6 +265,12 @@ p, li { white-space: pre-wrap; }
        <width>40</width>
        <height>40</height>
       </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QCheckBox" name="checkBox_2">
@@ -284,6 +296,9 @@ p, li { white-space: pre-wrap; }
        <height>40</height>
       </size>
      </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QCheckBox" name="checkBox_3">
      <property name="geometry">
@@ -308,9 +323,15 @@ p, li { white-space: pre-wrap; }
        <height>40</height>
       </size>
      </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -332,6 +353,9 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
    <widget class="QProgressBar" name="progressBar">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -346,7 +370,10 @@ p, li { white-space: pre-wrap; }
      </font>
     </property>
     <property name="value">
-     <number>24</number>
+     <number>0</number>
+    </property>
+    <property name="textVisible">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
