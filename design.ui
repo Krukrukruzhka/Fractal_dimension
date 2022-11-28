@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1240</width>
+    <width>1600</width>
     <height>1000</height>
    </rect>
   </property>
@@ -70,7 +70,7 @@
      <rect>
       <x>590</x>
       <y>10</y>
-      <width>640</width>
+      <width>1000</width>
       <height>320</height>
      </rect>
     </property>
@@ -104,7 +104,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>590</x>
       <y>340</y>
-      <width>640</width>
+      <width>1000</width>
       <height>320</height>
      </rect>
     </property>
@@ -186,7 +186,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>590</x>
       <y>670</y>
-      <width>640</width>
+      <width>1000</width>
       <height>320</height>
      </rect>
     </property>
@@ -288,7 +288,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>Фрактальная размерность</string>
+      <string>Показатель Херста</string>
      </property>
      <property name="iconSize">
       <size>
@@ -315,7 +315,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>Показатель Херста</string>
+      <string>Фрактальная размерность</string>
      </property>
      <property name="iconSize">
       <size>
