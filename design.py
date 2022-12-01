@@ -38,7 +38,7 @@ class Ui_MainWindow(object):
         self.graphicsView.setGeometry(QtCore.QRect(590, 10, 1000, 320))
         self.graphicsView.setObjectName("graphicsView")
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(20, 910, 561, 81))
+        self.textBrowser.setGeometry(QtCore.QRect(20, 900, 561, 91))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.textBrowser.setFont(font)
@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
         self.graphicsView_2.setGeometry(QtCore.QRect(590, 340, 1000, 320))
         self.graphicsView_2.setObjectName("graphicsView_2")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(20, 100, 221, 801))
+        self.plainTextEdit.setGeometry(QtCore.QRect(20, 100, 221, 681))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.plainTextEdit.setFont(font)
@@ -76,7 +76,7 @@ class Ui_MainWindow(object):
         self.graphicsView_3.setObjectName("graphicsView_3")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_3.setEnabled(False)
-        self.pushButton_3.setGeometry(QtCore.QRect(250, 340, 331, 61))
+        self.pushButton_3.setGeometry(QtCore.QRect(20, 800, 221, 61))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pushButton_3.setFont(font)
@@ -85,7 +85,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.setObjectName("pushButton_3")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setEnabled(True)
-        self.groupBox.setGeometry(QtCore.QRect(250, 450, 330, 130))
+        self.groupBox.setGeometry(QtCore.QRect(250, 320, 330, 130))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setUnderline(False)
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         self.checkBox_3.setObjectName("checkBox_3")
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_4.setEnabled(True)
-        self.pushButton_4.setGeometry(QtCore.QRect(250, 590, 331, 61))
+        self.pushButton_4.setGeometry(QtCore.QRect(250, 450, 331, 61))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pushButton_4.setFont(font)
@@ -160,9 +160,9 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Справка:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Показатель Херста H</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Фрактальная размерность D=2-H</p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">Справка:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Показатель Херста H</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Фрактальная размерность D=2-H</span></p></body></html>"))
         self.label.setText(_translate("MainWindow", "Данные кардиограммы"))
         self.label_3.setText(_translate("MainWindow", "Текущий файл:"))
         self.pushButton_3.setText(_translate("MainWindow", "Сохранить"))
