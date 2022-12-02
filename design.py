@@ -38,7 +38,7 @@ class Ui_MainWindow(object):
         self.graphicsView.setGeometry(QtCore.QRect(590, 10, 1000, 320))
         self.graphicsView.setObjectName("graphicsView")
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(20, 900, 561, 91))
+        self.textBrowser.setGeometry(QtCore.QRect(20, 890, 561, 101))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.textBrowser.setFont(font)
@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(20, 10, 560, 25))
+        self.label_3.setGeometry(QtCore.QRect(20, 20, 560, 25))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_3.setFont(font)
@@ -76,7 +76,7 @@ class Ui_MainWindow(object):
         self.graphicsView_3.setObjectName("graphicsView_3")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_3.setEnabled(False)
-        self.pushButton_3.setGeometry(QtCore.QRect(20, 800, 221, 61))
+        self.pushButton_3.setGeometry(QtCore.QRect(20, 800, 221, 71))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pushButton_3.setFont(font)
@@ -135,6 +135,17 @@ class Ui_MainWindow(object):
         self.progressBar.setProperty("value", 0)
         self.progressBar.setTextVisible(True)
         self.progressBar.setObjectName("progressBar")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(250, 530, 331, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_2.setFont(font)
+        self.label_2.setText("")
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_2.setObjectName("label_2")
+        self.graphicsView_4 = QtWidgets.QGraphicsView(self.centralwidget)
+        self.graphicsView_4.setGeometry(QtCore.QRect(259, 571, 311, 300))
+        self.graphicsView_4.setObjectName("graphicsView_4")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -160,14 +171,14 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">Справка:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Показатель Херста H</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Фрактальная размерность D=2-H</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">Справка:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">Показатель Херста H используется как промежуточный результат</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">Чем он меньше, тем нестабильнее сердечный ритм</span></p></body></html>"))
         self.label.setText(_translate("MainWindow", "Данные кардиограммы"))
         self.label_3.setText(_translate("MainWindow", "Текущий файл:"))
         self.pushButton_3.setText(_translate("MainWindow", "Сохранить"))
         self.groupBox.setTitle(_translate("MainWindow", "Отображаемые графики"))
         self.checkBox.setText(_translate("MainWindow", "Кардиограмма"))
         self.checkBox_2.setText(_translate("MainWindow", "Показатель Херста"))
-        self.checkBox_3.setText(_translate("MainWindow", "Фрактальная размерность"))
+        self.checkBox_3.setText(_translate("MainWindow", "Стабильность кардиограммы"))
         self.pushButton_4.setText(_translate("MainWindow", "Отобразить"))
