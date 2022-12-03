@@ -26,16 +26,17 @@ class HurstModel(object):
 
     @staticmethod
     def hurst(time_series, timepoint: int, coeff: float):
-        r = max(time_series[:timepoint]) - min(time_series[:timepoint])  # Размах
         n = len(time_series[:timepoint])  # Кол-во элементов
         mean = sum(time_series[:timepoint]) / n  # Среднее
-        std = (sum([(i - mean) ** 2 for i in time_series[:timepoint]]) / n) ** 0.5  # Стандартное отклонение
+        deviation_list = [x-mean for x in time_series[:timepoint]]
+        r = max(deviation_list)-min(deviation_list)  # Размах отклонений
+        std = (sum([(x - mean) ** 2 for x in time_series[:timepoint]]) / n) ** 0.5  # Стандартное отклонение
         return math.log(r / std) / math.log(coeff * n)
 
     def hurst_calculate(self):
         print('hurst_calculate start')
         self.hurst_list = []
         for i in range(4, len(self.kardio_list)+1):
-            self.hurst_list.append(self.hurst(time_series=self.kardio_list, timepoint=i, coeff=0.4))
+            self.hurst_list.append(self.hurst(time_series=self.kardio_list, timepoint=i, coeff=0.5))
         self.res_list = [1 if i > 1 else i for i in self.hurst_list]
         print('hurst_calculate stop')
