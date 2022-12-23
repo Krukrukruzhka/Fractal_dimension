@@ -1,18 +1,25 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QKeySequence
+from observer import GraphicsSet
 import matplotlib.pyplot as plt
+from PyQt5 import QtWidgets
 from PIL import Image
+import mytimer
 import design
 import model
-import mytimer
 
 
 class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
+    __instance = None
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.handler = model.HurstModel()
         model.HurstModel.get_instance()
+        self.graphics_set = GraphicsSet()
+        self.graphics_set.add(self.graphicsView)
+        self.graphics_set.add(self.graphicsView_2)
+        self.graphics_set.add(self.graphicsView_3)
         self.timer = mytimer.MyTimer()
         self.timer.timeout.connect(self.display_plots)
         self.progressBar.hide()  # replace to design.py
@@ -20,6 +27,23 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.pushButton_2.clicked.connect(self.calculate)
         self.pushButton_3.clicked.connect(self.edit_file)
         self.pushButton_4.clicked.connect(self.hide_plots)
+        self.__create_shortcuts()
+        self.actionOpen_Ctrl_O.triggered.connect(self.browse_folder)
+        self.actionSave_Ctrl_S.triggered.connect(self.edit_file)
+        if LabApp.__instance:
+            self.__instance = self.get_instance()
+
+    @classmethod
+    def get_instance(cls):
+        if not cls.__instance:
+            cls.__instance = LabApp()
+        return cls.__instance
+
+    def __create_shortcuts(self):
+        QtWidgets.QShortcut(QKeySequence("Ctrl+O"), self).activated.connect(self.browse_folder)
+        QtWidgets.QShortcut(QKeySequence("Ctrl+S"), self).activated.connect(self.edit_file)
+        # QtWidgets.QShortcut(QKeySequence("Ctrl+O"), self).activated.connect(self.browse_folder)
+        # QtWidgets.QShortcut(QKeySequence("Ctrl+O"), self).activated.connect(self.browse_folder)
 
     def edit_file(self):
         print('edit_file start')
@@ -33,9 +57,9 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
                         self.handler.kardio_list.append(float(s))
                     s = ''
                 else:
-                    s = s+i
+                    s = s + i
             self.handler.kardio_list.append(float(s))
-            file.writelines(list(map(lambda x: str(x)+'\n', self.handler.kardio_list)))
+            file.writelines(list(map(lambda x: str(x) + '\n', self.handler.kardio_list)))
         self.handler.hurst_calculate()
         print('edit_file stop')
 
@@ -45,31 +69,35 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         if not self.checkBox.isChecked():
             count_of_graphics -= 1
             self.graphicsView.hide()
+            self.graphics_set.remove(self.graphicsView)
         else:
             self.graphicsView.show()
         if not self.checkBox_2.isChecked():
             count_of_graphics -= 1
             self.graphicsView_2.hide()
+            self.graphics_set.remove(self.graphicsView_2)
         else:
             self.graphicsView_2.show()
         if not self.checkBox_3.isChecked():
             count_of_graphics -= 1
             self.graphicsView_3.hide()
+            self.graphics_set.remove(self.graphicsView_3)
         else:
             self.graphicsView_3.show()
-        height = int((self.height() - (count_of_graphics+1)*10)/count_of_graphics)
+        height = int((self.height() - (count_of_graphics + 1) * 10) / count_of_graphics)
         y = 10
         if self.checkBox.isChecked():
             self.graphicsView.setGeometry(self.graphicsView.x(), y, self.graphicsView.width(), height)
             y += height + 10
+            self.graphics_set.add(self.graphicsView)
         if self.checkBox_2.isChecked():
             self.graphicsView_2.setGeometry(self.graphicsView.x(), y, self.graphicsView.width(), height)
             y += height + 10
+            self.graphics_set.add(self.graphicsView_2)
         if self.checkBox_3.isChecked():
             self.graphicsView_3.setGeometry(self.graphicsView.x(), y, self.graphicsView.width(), height)
             y += height + 10
-        if self.handler:
-            self.draw_graphics(len(self.handler.hurst_list))
+            self.graphics_set.add(self.graphicsView_3)
         print('hide_plots stop')
 
     def __clear_plots(self):
@@ -86,11 +114,15 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.pushButton_4.setEnabled(flag)
         self.groupBox.setEnabled(flag)
 
+    def notify(self, counter):
+        for observer in self.graphics_set.observers:
+            self.draw_graphics(counter, observer)
+
     def display_plots(self):
         print('display_plots start')
         self.timer.counter += 1
         self.progressBar.setValue(self.timer.counter)
-        self.draw_graphics(self.timer.counter)
+        self.notify(self.timer.counter)
         if self.timer.counter == len(self.handler.hurst_list):
             self.timer.stop()
             self.timer.counter = 0
@@ -111,7 +143,7 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
     def draw_result(self, path: str):
         print('draw_result start')
         img = Image.open(path)
-        img = img.resize((self.graphicsView_4.width()-10, self.graphicsView_4.height()-10))
+        img = img.resize((self.graphicsView_4.width() - 10, self.graphicsView_4.height() - 10))
         img.save(path)
         scene = QtWidgets.QGraphicsScene(self)
         item = QtWidgets.QGraphicsPixmapItem(QPixmap(path))
@@ -123,8 +155,8 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
                         y_title: str):
         print('create_graphics start')
         plt.figure(figsize=(width, height))
-        plt.xlim((-1, len(data)+1))
-        plt.ylim((min(data)-0.2, max(data)+0.2))
+        plt.xlim((-1, len(data) + 1))
+        plt.ylim((min(data) - 0.2, max(data) + 0.2))
         if with_tail:
             plt.plot(list(range(endpoint - 1, len(data))), data[endpoint - 1:], color='red', linewidth=2)
         plt.plot(list(range(endpoint)), data[:endpoint], color='blue', linewidth=2)
@@ -139,51 +171,49 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         print('create_graphics stop')
         return scene
 
-    def draw_graphics(self, endpoint: int):
+    def draw_graphics(self, endpoint: int, graphic):
         print('draw_graphics start')
         width = 1
         height = 1
-        if not self.graphicsView.isHidden():
-            width = self.graphicsView.width()//100 - 0.2
-            height = self.graphicsView.height()//100 - 0.2
-        elif not self.graphicsView_2.isHidden():
-            width = self.graphicsView_2.width()//100 - 0.2
-            height = self.graphicsView_2.height()//100 - 0.2
-        elif not self.graphicsView_3.isHidden():
-            width = self.graphicsView_3.width()//100 - 0.2
-            height = self.graphicsView_3.height()//100 - 0.2
+        if not graphic.isHidden():
+            width = self.graphicsView.width() // 100 - 0.2
+            height = self.graphicsView.height() // 100 - 0.2
+
         plot_settings = {'data': self.handler.kardio_list,
                          'endpoint': endpoint + 3,
-                         'title': 'Кардиограмма',
+                         'title': 'Исходный временной ряд',
                          'filename': 'src\\fig1.png',
                          'width': width,
                          'height': height,
                          'with_tail': True,
                          'y_title': ''
-                        }
-        self.graphicsView.setScene(self.create_graphics(**plot_settings))
+                         }
+        if graphic == self.graphicsView:
+            graphic.setScene(self.create_graphics(**plot_settings))
 
         plot_settings = {'data': self.handler.hurst_list,
                          'endpoint': endpoint,
-                         'title': 'Показатели Херста в каждый момент кардиограммы',
+                         'title': 'Показатели Херста на каждой итерации алгоритма',
                          'filename': 'src\\fig2.png',
                          'width': width,
                          'height': height,
                          'with_tail': False,
                          'y_title': 'Показатель Херста'
-                        }
-        self.graphicsView_2.setScene(self.create_graphics(**plot_settings))
+                         }
+        if graphic == self.graphicsView_2:
+            graphic.setScene(self.create_graphics(**plot_settings))
 
         plot_settings = {'data': self.handler.res_list,
                          'endpoint': endpoint,
-                         'title': 'Стабильность ритма в каждый момент кардиограммы (0 - нестабильна, 1 - стабильна)',
+                         'title': 'Фрактальная размерность на каждой итерации алгоритма',
                          'filename': 'src\\fig3.png',
                          'width': width,
                          'height': height,
                          'with_tail': False,
                          'y_title': 'Стабильность'
                          }
-        self.graphicsView_3.setScene(self.create_graphics(**plot_settings))
+        if graphic == self.graphicsView_3:
+            graphic.setScene(self.create_graphics(**plot_settings))
         print('draw_graphics stop')
 
     def browse_folder(self):
@@ -208,4 +238,3 @@ class LabApp(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.progressBar.setMaximum(len(self.handler.hurst_list))
         self.timer.start(10)
         print('calculate stop')
-
