@@ -426,7 +426,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="actionOpen_Ctrl_O"/>
     <addaction name="actionSave_Ctrl_S"/>
-    <addaction name="actionSave_as"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
