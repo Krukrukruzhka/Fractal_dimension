@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1600</width>
-    <height>1000</height>
+    <height>930</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>100</y>
+      <y>170</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -45,7 +45,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>170</y>
+      <y>310</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -71,7 +71,7 @@
       <x>590</x>
       <y>10</y>
       <width>1000</width>
-      <height>320</height>
+      <height>280</height>
      </rect>
     </property>
    </widget>
@@ -79,7 +79,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>890</y>
+      <y>770</y>
       <width>561</width>
       <height>101</height>
      </rect>
@@ -95,17 +95,17 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Справка:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Показатель Херста H используется как промежуточный результат&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Чем он меньше, тем нестабильнее сердечный ритм&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Фрактальная размерность вычисляется по формуле D = 2 - H,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;где H - показатель Херста&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QGraphicsView" name="graphicsView_2">
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>340</y>
+      <y>300</y>
       <width>1000</width>
-      <height>320</height>
+      <height>280</height>
      </rect>
     </property>
    </widget>
@@ -115,7 +115,7 @@ p, li { white-space: pre-wrap; }
       <x>20</x>
       <y>100</y>
       <width>221</width>
-      <height>681</height>
+      <height>661</height>
      </rect>
     </property>
     <property name="font">
@@ -185,37 +185,10 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>670</y>
+      <y>590</y>
       <width>1000</width>
-      <height>320</height>
+      <height>280</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>800</y>
-      <width>221</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Сохранить</string>
-    </property>
-    <property name="default">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox">
@@ -225,7 +198,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>320</y>
+      <y>570</y>
       <width>330</width>
       <height>130</height>
      </rect>
@@ -258,7 +231,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>Кардиограмма</string>
+      <string>Временной ряд ( y(t) )</string>
      </property>
      <property name="iconSize">
       <size>
@@ -288,7 +261,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>Показатель Херста</string>
+      <string>Показатель Херста ( H(t) )</string>
      </property>
      <property name="iconSize">
       <size>
@@ -315,7 +288,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>Стабильность кардиограммы</string>
+      <string>Фрактальная размерность ( D(t) )</string>
      </property>
      <property name="iconSize">
       <size>
@@ -335,7 +308,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>450</y>
+      <y>700</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -359,7 +332,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>240</y>
+      <y>380</y>
       <width>331</width>
       <height>31</height>
      </rect>
@@ -376,35 +349,82 @@ p, li { white-space: pre-wrap; }
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>530</y>
+      <y>100</y>
       <width>331</width>
-      <height>31</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
-     <string/>
+     <string>Сгенерировать ряд</string>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
+    <property name="autoDefault">
+     <bool>true</bool>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView_4">
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>259</x>
-      <y>571</y>
-      <width>311</width>
-      <height>300</height>
+      <x>420</x>
+      <y>240</y>
+      <width>161</width>
+      <height>61</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Сохранить как</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>240</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Сохранить</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
