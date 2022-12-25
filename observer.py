@@ -1,8 +1,4 @@
 from abc import ABC, abstractmethod
-from matplotlib import pyplot as plt
-from PyQt5 import QtWidgets
-from PyQt5.QtGui import QPixmap
-import controller
 
 
 class AbstractObserver(ABC):
